@@ -7,6 +7,30 @@ use Illuminate\Support\Facades\Auth;
 
 class Garage extends Model
 {
+    protected $fillable = [
+        'name',
+        'short_description',
+        'description',
+        'phone_number',
+        'address',
+        'website',
+        'province_id',
+        'district_id',
+        'ward_id',
+        'user_id',
+        'working_time',
+        'avatar',
+    ];
+
+    /**
+     * Get full path for avatar.
+     * @param $value
+     * @return string
+     */
+    public function getAvatarAttribute($value)
+    {
+        return config('common.garage.avatar_path') . $value;
+    }
     /**
      * Get all visits.
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany

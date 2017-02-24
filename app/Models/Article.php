@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    protected $fillable = [
+        'type',
+        'title',
+        'short_description',
+        'content',
+        'user_id',
+        'avatar',
+    ];
     /**
      * Get all visits.
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
