@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Home;
 
-use App\Helpers\MyHelper;
+use MyHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
@@ -28,14 +27,9 @@ class UserController extends Controller
      * @param array $options
      * @return mixed
      */
-    public function uploadFile(UploadedFile $file, $isAvatar = 0)
+    public function uploadFile(UploadedFile $file)
     {
-        $storedFile = MyHelper::uploadFile($file, ['avatar' => $isAvatar, 'fileable_type' => 'users', 'fileable_id' => Auth::user()->id]);
-        if ($isAvatar) {
-            return $this->changeAvatar($storedFile['name']);
-        }
-
-        return redirect()->action('Home\UserController@index')->with('success', trans('helper.file_uploaded_success'));
+        return MyHelper::uploadFile($file);
     }
 
     /**
@@ -45,13 +39,17 @@ class UserController extends Controller
      */
     public function changeAvatar($avatarName)
     {
+        $oldAvatar = public_path() . Auth::user()->avatar;
+        if (\File::exists($oldAvatar)) {
+            \File::delete($oldAvatar);
+        }
+
         Auth::user()->avatar = $avatarName;
         return Auth::user()->save();
     }
     //
     public function index()
     {
-        //
         return view('homes.user.profile');
     }
 
@@ -117,7 +115,9 @@ class UserController extends Controller
 
         //Upload and change avatar if requested.
         if ($request->hasFile('avatar')) {
-            $this->uploadFile($request->file('avatar'), 1);
+            $filePath = $this->uploadFile($request->file('avatar'));
+            $this->changeAvatar($filePath);
+
             $isChanged = true;
             $notify = trans('auth.updated_avatar_success');
         }

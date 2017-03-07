@@ -29,7 +29,7 @@ class Garage extends Model
      */
     public function getAvatarAttribute($value)
     {
-        return config('common.garage.avatar_path') . $value;
+        return config('common.path.image') . $value;
     }
     /**
      * Get all visits.

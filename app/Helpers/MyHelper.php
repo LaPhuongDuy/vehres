@@ -15,40 +15,21 @@ class MyHelper
 {
    public static function uploadFile(UploadedFile $file, $options = array())
    {
-        if (isset($options['fileable_type']) && isset($options['fileable_id'])) {
-            $mimeType = $file->getClientMimeType();
-            $fileableType = $options['fileable_type'];
-            $fileName = $fileableType . '_' . uniqid() . '.' . $file->extension();
-            $path = "";
-
-            if (strpos($mimeType, 'image') !== false) {
-                $path .= config('common.path.image');
-            } else {
-                $path .= config('common.path.image');
+            $fileName = uniqid() . '.' . $file->extension();
+            $path = '';
+            for ($i = 0; $i < 5; $i ++) {
+                $randomString = md5(str_random(10));
+                $randomFolder = substr($randomString, 0, 2);
+                $path .= '/' . $randomFolder;
             }
 
-            //more type of file here !!!
-            // 'videos', 'audios'
-
-            $path .= '/' . $fileableType;
-            if (isset($options['avatar']) && $options['avatar'] == 1) {
-                $path .= config('common.path.avatar');
-            }
-            $path .= "/";
-
+            $path .= '/' . $fileName;
             //storage uploaded file
-            $stored = Storage::disk('upload')->put($path . $fileName,  \File::get($file));
+            $stored = Storage::disk('upload')->put('images' . $path,  \File::get($file));
 
             if ($stored == 1) {
-                $file = [
-                    'name' => $fileName,
-                    'path' => $path,
-                    'fileable_id' => $options['fileable_id'],
-                    'fileable_type' => $options['fileable_type'],
-                ];
-                return $file;
+                return $path;
             }
             abort(502);
-        }
    }
 }
