@@ -41,10 +41,26 @@
                                         {{ trans('layout.administration') }}
                                     </a>
                                 @elseif(Gate::allows('is-partner'))
-                                    <a href="{{ route('partner') }}">
+                                    <a href="{{ action('Partner\GarageController@index') }}">
                                         <i class="fa fa-handshake-o" style="font-size:20px;color:#0a568c"></i>
                                         {{ trans('layout.partner') }}
                                     </a>
+                                @endif
+                            </li>
+                            <li>
+                                @if(Gate::allows('is-partner'))
+                                    <a href="{{ action('Partner\GarageController@indexNonAct') }}">
+                                        <i class="fa fa-handshake-o" style="font-size:20px;color:#0a568c"></i>
+                                        Nonactive Garages
+                                    </a>
+                                @endif
+                            </li>
+                            <li>
+                                @if(Gate::allows('is-partner'))
+                                <a href="{{ action('Partner\GarageController@create') }}">
+                                    <i class="fa fa-handshake-o" style="font-size:20px;color:#0a568c"></i>
+                                    Create garage
+                                </a>
                                 @endif
                             </li>
                             <li>

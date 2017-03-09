@@ -25,4 +25,13 @@ class AdministrationUnit extends Model
     {
         return $this->hasMany(AdministrationUnit::class, 'parent_id');
     }
+
+    public function provinceGarages()
+    {
+        return $this->hasMany(Garage::class, 'province_id');
+    }
+    public function districtGarages()
+    {
+        return $this->hasMany(Garage::class, 'district_id');
+    }
 }

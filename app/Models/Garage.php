@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class Garage extends Model
 {
     protected $fillable = [
+
         'name',
         'short_description',
         'description',
@@ -31,6 +32,7 @@ class Garage extends Model
     {
         return config('common.path.image') . $value;
     }
+
     /**
      * Get all visits.
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
@@ -95,5 +97,43 @@ class Garage extends Model
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+
+    public function province()
+    {
+        return $this->belongsTo(AdministrationUnit::class, 'province_id');
+    }
+    public function district()
+    {
+        return $this->belongsTo(AdministrationUnit::class, 'district_id');
+    }
+
+    public function getAdministrationUnits()
+    {
+        $provinceId = $this->province_id;
+        $province = AdministrationUnit::find($provinceId);
+        $district = $province->children()->where('id', $this->district_id)->first();
+        $ward = $district->children()->where('id', $this->ward_id)->first();
+        return [
+            'province' => $province,
+            'district' => $district,
+            'ward' => $ward,
+        ];
+    }
+
+    public function getAddressByUnits()
+    {
+        $units = $this->getAdministrationUnits();
+        $address = '';
+        foreach ($units as $unit) {
+            $address .= $unit->name . ' ';
+        }
+
+        return $address;
+    }
+
+    public function getPlace($id)
+    {
+        return $this->administrationUnit();
     }
 }

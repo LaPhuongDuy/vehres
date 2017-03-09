@@ -6,6 +6,7 @@
  * Time: 2:14 PM
  */
 return [
+    'adding_garage_success' => 'Garage added successfully',
     'name' => 'Name',
     'login' => 'Login',
     'password' => 'Password',

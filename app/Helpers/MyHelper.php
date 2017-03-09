@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use App\Models\AdministrationUnit;
 
 /**
  * Created by PhpStorm.
@@ -31,5 +32,11 @@ class MyHelper
                 return $path;
             }
             abort(502);
+   }
+
+   public static function chosePlace($id)
+   {
+       $district=AdministrationUnit::select('name','id')->where('parent_id',$id)->get();
+       return response()->json($district);
    }
 }
