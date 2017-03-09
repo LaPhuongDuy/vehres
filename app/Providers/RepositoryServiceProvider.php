@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App;
+use App\Repositories\Contracts\GarageRepositoryInterface;
+use App\Repositories\Eloquent\GarageRepository;
+
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -24,6 +27,6 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        App::bind(GarageRepositoryInterface::class, GarageRepository::class);
     }
 }

@@ -23,6 +23,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['cus
 
     //Routes for managing users.
     Route::resource('managingUsers', 'UserController');
+
+    // Route for manage garages
+    Route::resource('garages', 'GarageController');
 });
 
 //Partner routes.
