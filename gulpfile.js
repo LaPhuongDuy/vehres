@@ -14,9 +14,9 @@ require('laravel-elixir-vue-2');
  */
 
 elixir((mix) => {
-    // mix.sass('app.scss')
-    //    .webpack('app.js');
+    mix.sass('app.scss')
+       .webpack('app.js');
     mix.scripts('helpers/*.js', 'public/js/helpers/helpers.js');
-    // mix.copy('resources/assets/bowers/font-awesome/css/font-awesome.min.css', 'public/bowers/font-awesome/css/font-awesome.min.css');
-    // mix.copy('resources/assets/bowers/font-awesome/fonts/', 'public/bowers/font-awesome/fonts/');
+    mix.copy('resources/assets/bowers/font-awesome/css/font-awesome.min.css', 'public/bowers/font-awesome/css/font-awesome.min.css');
+    mix.copy('resources/assets/bowers/font-awesome/fonts/', 'public/bowers/font-awesome/fonts/');
 });

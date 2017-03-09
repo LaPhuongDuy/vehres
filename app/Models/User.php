@@ -69,7 +69,7 @@ class User extends Authenticatable
      */
     public function getAvatarAttribute($value)
     {
-        return config('common.user.avatar_path') . $value;
+        return config('common.path.image') . $value;
     }
 
     /**

@@ -18,7 +18,7 @@ class PartnerMiddleware
     public function handle($request, Closure $next)
     {
         if (Auth::check()) {
-            if (Auth::user()->role === config('user.role.partner')) {
+            if (Auth::user()->role === config('common.user.role.partner')) {
                 return $next($request);
             }
         }

@@ -40,4 +40,14 @@ class Article extends Model
     {
         return $this->morphMany(Bookmark::class, 'bookmarkable');
     }
+
+    /**
+     * Get full path for avatar.
+     * @param $value
+     * @return string
+     */
+    public function getAvatarAttribute($value)
+    {
+        return config('common.path.image') . $value;
+    }
 }
