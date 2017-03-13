@@ -105,7 +105,7 @@ class RegisterController extends Controller
     protected function sendVerifyingEmailTo($user)
     {
         $mailObject = new VerifyAccount($user);
-        
+
         return Mail::to($user->email)->send($mailObject);
     }
 }
