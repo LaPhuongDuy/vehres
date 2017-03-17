@@ -22,5 +22,5 @@ elixir((mix) => {
     mix.copy('resources/assets/bowers/font-awesome/css/font-awesome.min.css', 'public/bowers/font-awesome/css/font-awesome.min.css');
     mix.copy('resources/assets/bowers/font-awesome/fonts/', 'public/bowers/font-awesome/fonts/');
     mix.copy('resources/assets/bowers/jquery/dist/jquery.min.js', 'public/bowers/jquery/dist/jquery.min.js')
-       .copy('resources/assets/bowers/bootstrap/dist/css/bootstrap.min.css', 'public/bowers/bootstrap/dist/css/bootstrap.min.css');
+       .copy('resources/assets/bowers/bootstrap/', 'public/bowers/bootstrap/');
 });

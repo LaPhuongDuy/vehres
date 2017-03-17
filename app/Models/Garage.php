@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Garage extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'name',
         'short_description',
@@ -29,7 +32,7 @@ class Garage extends Model
      */
     public function getAvatarAttribute($value)
     {
-        return config('common.path.image') . $value;
+        return config('common.path.image') . '/' .$value;
     }
     /**
      * Get all visits.
@@ -50,7 +53,7 @@ class Garage extends Model
     }
 
     /**
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function bookmarks()

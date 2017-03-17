@@ -28,5 +28,6 @@ return [
             'activated' => 1,
             'unactivated' => 0,
         ],
-    ]
+    ],
+    'paging_number' => 10,
 ];

@@ -30,7 +30,9 @@
                 </div>
                 <!--//banner-->
                 <!-- content -->
-                @yield('content')
+                <div class="grid-form">
+                    @yield('content')
+                </div>
             </div>
         </div>
     </div>

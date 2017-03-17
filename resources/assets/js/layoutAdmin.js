@@ -30,4 +30,12 @@ $(document).ready(function () {
             element.addClass('active');
         }
     });
+
+    // show activated garage
+    $('a[name="showGarageButton"]').click(function(event) {
+        var garageId = $(event.currentTarget).data('garage-id');
+        $.get('/admin/garages/'+ garageId, function(response) {
+            $('#show_activated_garage').html(response);
+        });
+    });
 });
