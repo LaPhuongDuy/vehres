@@ -195,7 +195,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     public function findAllBy($attribute, $value, $columns = array('*'))
     {
         $this->applyCriteria();
-        return $this->model->where($attribute, '=', $value)->get($columns);
+        return $this->model->where($attribute, '=', $value);
     }
 
     /**

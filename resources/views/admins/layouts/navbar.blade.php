@@ -61,11 +61,11 @@
                     <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-indent nav_icon"></i> <span class="nav-label">{{ trans('admin.manageGarages') }}</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="#" class=" hvr-bounce-to-right"> <i class="fa fa-plus nav_icon"></i></i>{{ trans('admin.newGarages') }}</a>
+                            <a href="{{ action('Admin\GarageController@index', ['status' => config('common.garage.status.unactivated')]) }}" class=" hvr-bounce-to-right"> <i class="fa fa-star nav_icon"></i></i></i>{{ trans('admin.newGarages') }}</a>
                         </li>
 
                         <li>
-                            <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-check nav_icon"></i>{{ trans('admin.garagesActivated') }}</a>
+                            <a href="{{ action('Admin\GarageController@index', ['status' => config('common.garage.status.activated')]) }}" class=" hvr-bounce-to-right"><i class="fa fa-check nav_icon"></i>{{ trans('admin.garagesActivated') }}</a>
                         </li>
                     </ul>
                 </li>
