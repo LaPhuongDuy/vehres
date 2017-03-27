@@ -34,19 +34,40 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li>
-                                @if(Gate::allows('is-admin'))
+                            @if(Gate::allows('is-admin'))
+                                <li>
                                     <a href="{{ route('admin') }}">
                                         <i class="fa fa-bus" style="font-size:20px;color:#0a568c"></i>
                                         {{ trans('layout.administration') }}
                                     </a>
-                                @elseif(Gate::allows('is-partner'))
-                                    <a href="{{ route('partner') }}">
+                                </li>
+                            @elseif(Gate::allows('is-partner'))
+                                <li>
+                                    <a href="{{ action('Partner\GarageController@index') }}">
                                         <i class="fa fa-handshake-o" style="font-size:20px;color:#0a568c"></i>
                                         {{ trans('layout.partner') }}
                                     </a>
-                                @endif
-                            </li>
+                                </li>
+                            @endif
+
+                            @if(Gate::allows('is-partner'))
+                                <li>
+                                    <a href="{{ action('Partner\GarageController@indexInactive') }}">
+                                        <i class="fa fa-handshake-o" style="font-size:20px;color:#0a568c"></i>
+                                        Inactive Garages
+                                    </a>
+                                </li>
+                            @endif
+
+                            @if(Gate::allows('is-partner'))
+                                <li>
+                                    <a href="{{ action('Partner\GarageController@create') }}">
+                                        <i class="fa fa-handshake-o" style="font-size:20px;color:#0a568c"></i>
+                                        Create garage
+                                    </a>
+                                </li>
+                            @endif
+
                             <li>
                                 <a href="{{ action('Home\HomeController@myWorld') }}">
                                     <i class="fa fa-globe" style="font-size:20px;color:#0a568c" aria-hidden="true"></i>

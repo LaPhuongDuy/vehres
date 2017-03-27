@@ -44,11 +44,13 @@ class UpdateUserRequest extends FormRequest
 
         if ( $this->exists('updateProfile')) {
             $this->type = config('common.user.task_bar_status.update_profile');
+
             return $infoValidation;
         }
 
         if ( $this->exists('changePassword')) {
             $this->type = config('common.user.task_bar_status.change_password');
+
             return $pasValidation;
         }
     }

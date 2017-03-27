@@ -34,6 +34,7 @@ class Garage extends Model
     {
         return config('common.path.image') . '/' .$value;
     }
+
     /**
      * Get all visits.
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
@@ -89,6 +90,7 @@ class Garage extends Model
         if (Auth::check()) {
             return $this->ratings()->where('user_id', Auth::user()->id);
         }
+
         return null;
     }
     /**
@@ -98,5 +100,29 @@ class Garage extends Model
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function province()
+    {
+        return $this->belongsTo(AdministrationUnit::class, 'province_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function district()
+    {
+        return $this->belongsTo(AdministrationUnit::class, 'district_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function ward()
+    {
+        return $this->belongsTo(AdministrationUnit::class, 'ward_id');
     }
 }

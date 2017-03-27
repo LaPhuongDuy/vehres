@@ -25,4 +25,28 @@ class AdministrationUnit extends Model
     {
         return $this->hasMany(AdministrationUnit::class, 'parent_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function provinceGarages()
+    {
+        return $this->hasMany(Garage::class , 'province_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function districtGarages()
+    {
+        return $this->hasMany(Garage::class, 'district_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function wardGarages()
+    {
+        return $this->hasMany(Garage::class, 'ward_id');
+    }
 }

@@ -180,6 +180,7 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Lord\Laroute\LarouteServiceProvider::class,
     ],
 
     /*
@@ -194,7 +195,6 @@ return [
     */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,

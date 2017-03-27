@@ -4,7 +4,6 @@ return [
         'upload' => '/uploads',
         'image' => '/uploads/images',
     ],
-
     'user' => [
         'default_avatar' => 'default.jpg',
         'role' => [
@@ -21,7 +20,6 @@ return [
             'change_password' => 2,
         ]
     ],
-
     'garage' => [
         'default_avatar' => 'default.jpg',
         'status' => [
@@ -29,5 +27,9 @@ return [
             'unactivated' => 0,
         ],
     ],
-    'paging_number' => 10,
+    'message' => [
+        'delete_success' => 'You deleted item success!',
+        'delete_error' => 'Something wrong when you delete item',
+    ],
+    'paginate' => '10',
 ];

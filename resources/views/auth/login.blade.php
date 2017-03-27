@@ -53,7 +53,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ trans('layout.login') }}
                                 </button>
-
                                 <a class="btn btn-link" href="{{ action('Auth\ForgotPasswordController@showLinkRequestForm') }}">
                                     {{ trans('layout.forgot_your_password') }}
                                 </a>

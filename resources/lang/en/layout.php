@@ -6,6 +6,7 @@
  * Time: 2:14 PM
  */
 return [
+    'adding_garage_success' => 'Garage added successfully',
     'name' => 'Name',
     'login' => 'Login',
     'password' => 'Password',
@@ -37,5 +38,7 @@ return [
     'upload_avatar' => 'Upload avatar',
     'cancel' => 'Cancel',
     'update' => 'Update',
+    'delete' => 'Delete',
+    'edit' => 'Edit',
     'page_access_permission_not_allowed' => 'You are not allowed accessing to :site .',
 ];

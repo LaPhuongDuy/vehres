@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
 //Administration routes.
@@ -30,15 +31,16 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['cus
 
 //Partner routes.
 Route::group(['namespace' => 'Partner', 'prefix' => 'partner', 'middleware' => ['customizedAuth', 'partner']], function (){
-    Route::get('/', 'PartnerController@index')->name('partner');
+    Route::get('findPlace', 'GarageController@chosenPlace');
+    Route::get('getGarage', 'GarageController@getGarage');
+    Route::get('/indexInactive', 'GarageController@indexInactive');
+    Route::resource('garages', 'GarageController');
 });
 
 //Home routes.
 Route::group(['namespace' => 'Home', 'prefix' => 'home', 'middleware' => ['customizedAuth']], function (){
-
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/myWorld', 'HomeController@myWorld');
-
     //Routes for home user.
     Route::resource('users', 'UserController', ['except' => [
         'store', 'create', 'destroy', 'show'
@@ -47,3 +49,5 @@ Route::group(['namespace' => 'Home', 'prefix' => 'home', 'middleware' => ['custo
 
 //Account activation route
 Route::get('/accountActive', 'Auth\VerifyAccountController@activateAccount');
+
+
