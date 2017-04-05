@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['cus
 //Partner routes.
 Route::group(['namespace' => 'Partner', 'prefix' => 'partner', 'middleware' => ['customizedAuth', 'partner']], function (){
     Route::get('/', 'PartnerController@index')->name('partner');
+    Route::resource('articles', 'ArticleController');
 });
 
 //Home routes.

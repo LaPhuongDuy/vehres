@@ -1,3 +1,4 @@
+e
 <?php
 /**
  * Created by PhpStorm.
@@ -38,4 +39,5 @@ return [
     'cancel' => 'Cancel',
     'update' => 'Update',
     'page_access_permission_not_allowed' => 'You are not allowed accessing to :site .',
+    'create_success' => 'You are create success!'
 ];
